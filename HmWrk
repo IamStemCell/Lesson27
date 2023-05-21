@@ -1,3 +1,9 @@
+#task 
+
+#Розширити структуру, яку побудували на уроці, можливістю вставки дерева в наявне дерево
+
+та видалення піддерева з дерева, що існує.
+
 # # myTree = [3,
 
 # #             [5,
@@ -193,6 +199,76 @@ class BinaryTree:
         if self.rightChild:
 
             self.rightChild.in_order()
+            
+     # homework code  starts here with extended methods:
+
+    def insertLeftTree(self, newTree):
+
+        if self.leftChild is None:
+
+            self.leftChild = newTree
+
+        else:
+
+            newTree.leftChild = self.leftChild
+
+            self.leftChild = newTree
+
+    def insertRightTree(self, newTree):
+
+        if self.rightChild is None:
+
+            self.rightChild = newTree
+
+        else:
+
+            newTree.rightChild = self.rightChild
+
+            self.rightChild = newTree
+
+    def deleteLeftSubtree(self):
+
+        if self.leftChild:
+
+            self.leftChild = None
+
+    def deleteRightSubtree(self):
+
+        if self.rightChild:
+
+            self.rightChild = None
+
+#створюємо 2 бінарні дерева:
+leftSubtree = BinaryTree('k')
+leftSubtree.insertLeft('l')
+leftSubtree.insertRight('m')
+
+rightSubtree = BinaryTree('n')
+rightSubtree.insertLeft('p')
+rightSubtree.insertRight('s')
+
+#створюємо основне дерево з коренем 'd'
+root = BinaryTree('d')
+root.insertLeftTree(leftSubtree)
+root.insertRightTree(rightSubtree)
+
+#обхід дерева методом pre_order() для перевірки
+root.pre_order()
+print()
+#d -> k -> l -> m -> n -> p -> s ->
+
+# видаляємо під дерево 
+root.deleteLeftSubtree()
+
+# обхід pre_order() після видалення, для перевірки 
+root.pre_order()
+print()
+#d -> n -> p -> s ->
+
+
+
+
+
 
 #
 
@@ -249,7 +325,15 @@ print()
 
 root.in_order()
 
-#task 
-#Розширити структуру, яку побудували на уроці, можливістю вставки дерева в наявне дерево
-та видалення піддерева з дерева, що існує.
+
+
+  
+
+
+
+
+    
+
+
+
 
